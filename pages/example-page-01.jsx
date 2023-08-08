@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import HeadingSection from "../components/heading-section";
+import React from "react";
+import HeadingSection from "components/heading-section";
+import Layout from "components/layout";
 
 // Example 1
 
@@ -85,7 +86,7 @@ function HelloB({ foo, bar, name }) {
 
 export default function ExamplePage01() {
   return (
-    <>
+    <Layout>
       <main>
         <HeadingSection title="Example Page 01" date="Jul 24, 2023" />
         <section>
@@ -219,6 +220,6 @@ export default function ExamplePage01() {
           </p>
         </article>
       </main>
-    </>
+    </Layout>
   );
 }

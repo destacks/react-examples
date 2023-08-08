@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import HeadingSection from "../components/heading-section";
+import HeadingSection from "components/heading-section";
+import Layout from "components/layout";
 
 function HelloA({ foo, bar, name }) {
   return (
@@ -26,7 +27,7 @@ export default function ExamplePage02() {
   const [foo, setFoo] = useState("Initial Foo");
 
   return (
-    <>
+    <Layout>
       <main>
         <HeadingSection title="Example Page 02" date="Aug 8, 2023" />
         <section>
@@ -35,6 +36,6 @@ export default function ExamplePage02() {
           <HelloB foo={foo} bar="Bar" name="Charlie" />
         </section>
       </main>
-    </>
+    </Layout>
   );
 }
