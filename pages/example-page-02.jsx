@@ -6,7 +6,7 @@ function Input({ foo, bar, name, onInputChange }) {
   const handleChange = (event) => onInputChange(event.target.value);
 
   return (
-    <div style={{ padding: "24px 0" }}>
+    <div className="my-8">
       <input type="text" className="my-8" onChange={handleChange} />
       <div>
         Hello {foo}, {bar}, {name}!
@@ -17,7 +17,7 @@ function Input({ foo, bar, name, onInputChange }) {
 
 function Display({ foo, bar, name }) {
   return (
-    <div style={{ padding: "24px 0" }}>
+    <div className="my-8">
       <div>
         Hello {foo}, {bar}, {name}!
       </div>
