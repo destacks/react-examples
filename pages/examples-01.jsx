@@ -1,5 +1,6 @@
 import React from "react";
 import Heading from "../components/page/heading";
+import Markdown from "markdown-to-jsx";
 
 // Example 1
 
@@ -117,106 +118,61 @@ export default function Examples01() {
         <div id="root"></div>
       </section>
       <article>
-        <p>NOTES:</p>
-
-        <p>
-          React has two ways of creating componens, class-based and
-          function-based.
-          <br />
-          Function-based is the modern, recommended way!!!
-        </p>
-
-        <p>JSX = &quot;J&quot;ava&quot;S&quot;cript an &quot;X&quot;ML</p>
-
-        <p>
-          <br />
-          Every {} in JSX is going into JavaScript-Land. In there you can use
-          normal JS assignments.
-          <br />
-          Examples:
-          <br />
-          <br />- a.{")"}: 1 + 1<br />- b.{")"}: &quot;Bob&quot;
-          <br />- c.{")"}: {"("}
-          {")"} {"->"} console.log{"("}&quot;foo&quot;{")"}
-          <br />
-        </p>
-
-        <p>
-          React is nothing else than Client-Side JS which inhabits one element
-          of your DOM,
-          <br />
-          Most of the time a div element wrapped by the HTML body-tag.
-          <br />
-          <br />
-          Please note:
-          <br />
-          <br />
-          - But there it wants to rule complelty alone !!!
-          <br />
-          - No other JS is allowed in there, no JQuery, no custom JS or other
-          libraries.
-          <br />
-          <br />
-          Reason:
-          <br />
-          <br />
-          React does NOT operate in the real &quot;DOM&quot;, React operates in
-          the so called &quot;Virtual DOM&quot;.
-          <br />
-          In the &quot;Virtual DOM&quot; world, it produces one &quot;Virtual
-          DOM&quot; {"("}current{")"} and on changes a second &quot;Virtual
-          DOM&quot; {"("}next{")"}
-          <br />
-          and does a difference calculation {"("}aka diff calculation{")"}{" "}
-          between those {"("}diff: current {"<->"} next{")"}.<br />
-          And ONLY injects the differences {"("}surgically{")"} in the real
-          &quot;DOM&quot; {"("}changedElement.innerHTML = &quot;I changed
-          :D&quot;{")"}.<br />
-          <br />
-          In Principle:
-          <br />
-          <br />
-          <br />
-          Real-DOM {"("}looks at it once on startup{")"} {"->"} Virtual-DOM{" "}
-          {"("}current{")"} {"->"} Virtual-DOM&#96; {"("}aka changed, next DOM
-          {")"} {"->"} diff of both VDOMs {"->"}
-          <br />
-          inject into Real-DOM {"->"} on success, &quot;next&quot; VDOM becomes
-          &quot;current&quot;, and cylce repeats.
-          <br />
-          <br />
-          It does this on EVERY change!!! If you have many changes and or
-          frequent changes,
-          <br />
-          this will slow down React to a hold, because of to many changes.
-          <br />
-          <br />
-          Thumb Rules:
-          <br />
-          <br />
-          1.{")"} Creating a real new DOM in a browser {"("}like Chrome{")"} is
-          very expensive. Expensive means,
-          <br />
-          its taking CPU cycles {"("}aka calculation power{")"} and therefore
-          time.
-          <br />
-          <br />
-          2.{")"} Injecting only changes via &quot;elemnet.innerHTML&quot; is
-          much cheaper, thats why React does this.
-          <br />
-          <br />
-          3.{")"} BUt it has a Virtual DOM diffing cost, thats why &quot;Virtual
-          DOM diffing&quot; like React does it
-          <br />
-          is a dumb but good enough solution {"("}most of the time{")"}
-          <br />
-          <br />
-          4.{")"} Better and faster solution always diff and inject on the real
-          &quot;DOM&quot;.
-          <br />
-          For example: Svelte, SolidJS, ...
-        </p>
+        <Markdown>{getNotes()}</Markdown>
       </article>
     </>
   );
+}
+
+function getNotes() {
+  return `
+# React Component Creation
+
+## Introduction
+
+React has two ways of creating components, class-based and function-based. Function-based is the modern, recommended way.
+
+### JSX
+
+JSX stands for "JavaScript and XML".
+
+#### Usage in JavaScript
+
+Every "{}" in JSX is going into JavaScript-Land. In there, you can use normal JS assignments. Examples:
+
+- a.): 1 + 1
+- b.): "Bob"
+- c.): () => console.log("foo")
+
+## React's Nature
+
+React is nothing else than Client-Side JS which inhabits one element of your DOM, most of the time a div element wrapped by the HTML body-tag.
+
+### Restrictions
+
+Please note:
+
+- But there, it wants to rule completely alone.
+- No other JS is allowed in there, no JQuery, no custom JS, or other libraries.
+
+## The Virtual DOM
+
+React does NOT operate in the real "DOM"; React operates in the so-called "Virtual DOM". In the "Virtual DOM" world, it produces one "Virtual DOM" (current) and on changes, a second "Virtual DOM" (next), and does a difference calculation (aka diff calculation) between those (diff: current <-> next). It ONLY injects the differences (surgically) into the real "DOM" (changedElement.innerHTML = "I changed :D").
+
+### Principle
+
+Real-DOM (looks at it once on startup) -> Virtual-DOM (current) -> Virtual-DOM' (aka changed, next DOM) -> diff of both VDOMs -> inject into Real-DOM -> on success, "next" VDOM becomes "current", and the cycle repeats.
+
+### Performance
+
+It does this on EVERY change! If you have many changes and or frequent changes, this will slow down React to a hold because of too many changes.
+
+### Thumb Rules
+
+1. Creating a real new DOM in a browser (like Chrome) is very expensive. Expensive means it's taking CPU cycles (aka calculation power) and therefore time.
+2. Injecting only changes via "element.innerHTML" is much cheaper; that's why React does this.
+3. But it has a Virtual DOM diffing cost; that's why "Virtual DOM diffing" like React does it is a dumb but good enough solution (most of the time).
+4. Better and faster solutions always diff and inject on the real "DOM". For example: Svelte, SolidJS, etc.
+
+`;
 }
