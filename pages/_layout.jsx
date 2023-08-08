@@ -23,7 +23,7 @@ export default function Layout({ children }) {
           rel="noopener noreferrer"
           className="flex items-center justify-center group"
         >
-          <h3 className="m-1 group-hover:text-pink-500">View Code</h3>
+          <h3 className="m-1 group-hover:text-pink-500">View Code:</h3>
           <svg
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
