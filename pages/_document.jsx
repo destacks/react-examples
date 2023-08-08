@@ -1,11 +1,14 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main as Page, NextScript } from "next/document";
+import Layout from "./_layout";
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body>
-        <Main />
+      <body class="min-h-screen">
+        <Layout>
+          <Page />
+        </Layout>
         <NextScript />
       </body>
     </Html>
