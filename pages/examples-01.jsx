@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Heading from "../components/page/heading";
 import Markdown from "markdown-to-jsx";
 import SubHeading from "../components/page/sub-heading";
+import { Component as PageComponent } from "../components/page/component";
 
 // Example 1
 
@@ -67,18 +68,15 @@ function HelloA({ foo, bar, name }) {
 
   // return React.createElement("div", null, `Hello ${props.toWhat}`);
   return (
-    <div style={{ padding: "24px 0" }}>
-      <input type="text" onChange={(e) => setFoo(e.target.value)} />
-      <div>
-        Hello {foo}, {bar}, {name}!
-      </div>
+    <div>
+      Hello {foo}, {bar}, {name}!
     </div>
   );
 }
 
 function HelloB({ foo, bar, name }) {
   // ONLY EXAMPLE PURPOSE, DON'T USE THIS KIND OF COMPONENT IN PRODUCTION
-  return React.createElement("div", null, `Hello ${foo}, ${bar}, ${name}`);
+  return React.createElement("div", null, `Hello ${foo}, ${bar}, ${name}!`);
 }
 
 // Example 4:
@@ -86,36 +84,39 @@ function HelloB({ foo, bar, name }) {
 // ... next time: Custom Input React element where I get custom attributes and the rest in ...props.
 
 export default function Examples01() {
+  const [foo, setFoo] = useState("Foo");
+
   return (
     <>
       <Heading title="Examples 01" date="Jul 24, 2023" />
       <section className="mb-12">
-        <SubHeading>Lifting Up the State:</SubHeading>
+        <SubHeading>Please Also Look at the Source Code</SubHeading>
         <div className="p-8 border-pink-400 border-2 rounded-lg">
-          <div>
-            <h1>Example 1</h1>
-            <p>Purpose of example: ComponentA === ComponentB</p>
+          <PageComponent title="Example 1">
+            <SubHeading>
+              Purpose of example: ComponentA === ComponentB
+            </SubHeading>
             <ComponentA />
             <ComponentB />
-          </div>
+          </PageComponent>
 
-          <div>
-            <h1>Example 2</h1>
-            <p>
+          <PageComponent title="Example 2">
+            <SubHeading>
               Purpose of example: Title === TitleAsPureReactFunctions,
               <br />
               plus JSX is Javascript (name = One example)
-            </p>
+            </SubHeading>
             <Title />
             <TitleAsPureReactFunctions />
-          </div>
+          </PageComponent>
 
-          <div>
-            <h1>Example 3</h1>
-            <HelloA foo="Foo" bar="Bar" name="Alice" />
-            <HelloA foo="Foo" bar="Bar" name="Bob" />
-            <HelloB foo="Foo" bar="Bar" name="Charlie" />
-          </div>
+          <PageComponent title="Example 3">
+            <SubHeading>Reactive Input example</SubHeading>
+            <input type="text" onChange={(e) => setFoo(e.target.value)} />
+            <HelloA foo={foo} bar="Bar" name="Alice" />
+            <HelloA foo={foo} bar="Bar" name="Bob" />
+            <HelloB foo={foo} bar="Bar" name="Charlie" />
+          </PageComponent>
 
           {/* Entry point in your RLI Django-React project */}
           <div id="root"></div>
@@ -130,7 +131,7 @@ export default function Examples01() {
 
 function getNotes() {
   return `
-# React Component Creation
+# React as PageComponentCreation
 
 ## Introduction
 
