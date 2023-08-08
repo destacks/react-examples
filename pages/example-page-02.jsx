@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import HeadingSection from "components/heading-section";
 import Layout from "components/layout";
 
-function HelloA({ foo, bar, name }) {
+function Input({ foo, bar, name, onInputChange }) {
+  const handleChange = (event) => onInputChange(event.target.value);
+
   return (
     <div style={{ padding: "24px 0" }}>
-      <input type="text" onChange={(e) => setFoo(e.target.value)} />
+      <input type="text" className="my-8" onChange={handleChange} />
       <div>
         Hello {foo}, {bar}, {name}!
       </div>
@@ -13,7 +15,7 @@ function HelloA({ foo, bar, name }) {
   );
 }
 
-function HelloB({ foo, bar, name }) {
+function Display({ foo, bar, name }) {
   return (
     <div style={{ padding: "24px 0" }}>
       <div>
@@ -24,16 +26,16 @@ function HelloB({ foo, bar, name }) {
 }
 
 export default function ExamplePage02() {
-  const [foo, setFoo] = useState("Initial Foo");
-
+  const [foo, setFoo] = useState("Foo");
   return (
     <Layout>
       <main>
         <HeadingSection title="Example Page 02" date="Aug 8, 2023" />
         <section>
           <h2>Example: Lifting Up the State</h2>
-          <HelloA foo={foo} bar="Bar" name="Alice" />
-          <HelloB foo={foo} bar="Bar" name="Charlie" />
+          <br /> <br />
+          <Input foo={foo} bar="Bar" name="Alice" onInputChange={setFoo} />
+          <Display foo={foo} bar="Bar" name="Charlie" />
         </section>
       </main>
     </Layout>
