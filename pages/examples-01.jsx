@@ -1,6 +1,7 @@
 import React from "react";
 import Heading from "../components/page/heading";
 import Markdown from "markdown-to-jsx";
+import SubHeading from "../components/page/sub-heading";
 
 // Example 1
 
@@ -88,37 +89,40 @@ export default function Examples01() {
   return (
     <>
       <Heading title="Examples 01" date="Jul 24, 2023" />
-      <section>
-        <div>
-          <h1>Example 1</h1>
-          <p>Purpose of example: ComponentA === ComponentB</p>
-          <ComponentA />
-          <ComponentB />
-        </div>
+      <section className="mb-12">
+        <SubHeading>Lifting Up the State:</SubHeading>
+        <div className="p-8 border-pink-400 border-2 rounded-lg">
+          <div>
+            <h1>Example 1</h1>
+            <p>Purpose of example: ComponentA === ComponentB</p>
+            <ComponentA />
+            <ComponentB />
+          </div>
 
-        <div>
-          <h1>Example 2</h1>
-          <p>
-            Purpose of example: Title === TitleAsPureReactFunctions,
-            <br />
-            plus JSX is Javascript (name = One example)
-          </p>
-          <Title />
-          <TitleAsPureReactFunctions />
-        </div>
+          <div>
+            <h1>Example 2</h1>
+            <p>
+              Purpose of example: Title === TitleAsPureReactFunctions,
+              <br />
+              plus JSX is Javascript (name = One example)
+            </p>
+            <Title />
+            <TitleAsPureReactFunctions />
+          </div>
 
-        <div>
-          <h1>Example 3</h1>
-          <HelloA foo="Foo" bar="Bar" name="Alice" />
-          <HelloA foo="Foo" bar="Bar" name="Bob" />
-          <HelloB foo="Foo" bar="Bar" name="Charlie" />
-        </div>
+          <div>
+            <h1>Example 3</h1>
+            <HelloA foo="Foo" bar="Bar" name="Alice" />
+            <HelloA foo="Foo" bar="Bar" name="Bob" />
+            <HelloB foo="Foo" bar="Bar" name="Charlie" />
+          </div>
 
-        {/* Entry point in your RLI Django-React project */}
-        <div id="root"></div>
+          {/* Entry point in your RLI Django-React project */}
+          <div id="root"></div>
+        </div>
       </section>
       <article>
-        <Markdown>{getNotes()}</Markdown>
+        <Markdown class="prose">{getNotes()}</Markdown>
       </article>
     </>
   );
