@@ -13,7 +13,7 @@
   width: 34px;
 }
 
-.board-row:after {
+.boardRow:after {
   clear: both;
   content: '';
   display: table;
@@ -27,6 +27,6 @@
   flex-direction: row;
 }
 
-.game-info {
+.gameInfo {
   margin-left: 20px;
 }
