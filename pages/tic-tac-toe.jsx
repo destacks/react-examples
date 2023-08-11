@@ -1,27 +1,40 @@
 import React, { useState } from "react";
 import styles from '@/styles/Tic-tac-toe.module.css'
 
-function Square({ value }) {
-  return <button className={styles.square}>{value}</button>
+function Square() {
+  const [value, setValue] = useState(null);
+
+  function handleClick() {
+    setValue('X');
+  }
+
+  return (
+    <button 
+    className={styles.square}
+    onClick={handleClick}
+    >
+      {value}
+    </button>
+  )
 }
 
 export default function Board() {
   return (
     <>
       <div className={styles.boardRow}>
-        <Square value="1" />
-        <Square value="2" />
-        <Square value="3" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className={styles.boardRow}>
-        <Square value="4" />
-        <Square value="5" />
-        <Square value="6" />
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className={styles.boardRow}>
-        <Square value="7" />
-        <Square value="8" />
-        <Square value="9" />
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   )
